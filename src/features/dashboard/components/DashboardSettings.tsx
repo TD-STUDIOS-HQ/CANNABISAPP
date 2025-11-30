@@ -8,54 +8,54 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export const DashboardSettings = () => {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Settings</h2>
+      <h2 className="text-2xl font-bold text-white">Settings</h2>
       
       <div className="grid gap-6">
-        <Card>
+        <Card className="bg-black/20 backdrop-blur-xl border-white/10 text-white">
           <CardHeader>
-            <CardTitle>Brand Information</CardTitle>
-            <CardDescription>Update your brand details and preferences</CardDescription>
+            <CardTitle className="text-white">Brand Information</CardTitle>
+            <CardDescription className="text-white/60">Update your brand details and preferences</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <Label htmlFor="brand-name">Brand Name</Label>
-              <Input id="brand-name" placeholder="Your Brand Name" />
+              <Label htmlFor="brand-name" className="text-white">Brand Name</Label>
+              <Input id="brand-name" placeholder="Your Brand Name" className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-emerald-500/50" />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="brand-description">Description</Label>
-              <Textarea id="brand-description" placeholder="Tell customers about your brand" />
+              <Label htmlFor="brand-description" className="text-white">Description</Label>
+              <Textarea id="brand-description" placeholder="Tell customers about your brand" className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-emerald-500/50" />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="contact-email">Contact Email</Label>
-              <Input id="contact-email" type="email" placeholder="contact@yourbrand.com" />
+              <Label htmlFor="contact-email" className="text-white">Contact Email</Label>
+              <Input id="contact-email" type="email" placeholder="contact@yourbrand.com" className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-emerald-500/50" />
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-black/20 backdrop-blur-xl border-white/10 text-white">
           <CardHeader>
-            <CardTitle>Business Settings</CardTitle>
-            <CardDescription>Configure your business preferences</CardDescription>
+            <CardTitle className="text-white">Business Settings</CardTitle>
+            <CardDescription className="text-white/60">Configure your business preferences</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <Label htmlFor="tax-rate">Tax Rate (%)</Label>
-              <Input id="tax-rate" type="number" placeholder="8.25" />
+              <Label htmlFor="tax-rate" className="text-white">Tax Rate (%)</Label>
+              <Input id="tax-rate" type="number" placeholder="8.25" className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-emerald-500/50" />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="delivery-fee">Delivery Fee ($)</Label>
-              <Input id="delivery-fee" type="number" placeholder="5.00" />
+              <Label htmlFor="delivery-fee" className="text-white">Delivery Fee ($)</Label>
+              <Input id="delivery-fee" type="number" placeholder="5.00" className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-emerald-500/50" />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency" className="text-white">Currency</Label>
               <Select>
-                <SelectTrigger>
+                <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-emerald-500/50">
                   <SelectValue placeholder="Select currency" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="usd">USD ($)</SelectItem>
-                  <SelectItem value="cad">CAD ($)</SelectItem>
-                  <SelectItem value="eur">EUR (€)</SelectItem>
+                <SelectContent className="bg-zinc-950 border-white/10 text-white">
+                  <SelectItem value="usd" className="focus:bg-white/10 focus:text-white">USD ($)</SelectItem>
+                  <SelectItem value="cad" className="focus:bg-white/10 focus:text-white">CAD ($)</SelectItem>
+                  <SelectItem value="eur" className="focus:bg-white/10 focus:text-white">EUR (€)</SelectItem>
                 </SelectContent>
               </Select>
             </div>

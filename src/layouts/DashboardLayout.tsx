@@ -28,20 +28,15 @@ export const DashboardLayout = ({ children, title, showDateFilter = true }: Dash
 
   return (
     <div 
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: `url('/lovable-uploads/9625d965-6a42-4323-8497-34b244302dc2.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
+      className="min-h-screen relative bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/20 via-zinc-950 to-zinc-950"
     >
-      {/* Overlay for better contrast */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
+      {/* Ambient background effects */}
+      <div className="fixed inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
+      <div className="fixed top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-600/10 blur-[120px] pointer-events-none" />
+      <div className="fixed bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-900/10 blur-[100px] pointer-events-none" />
       
       <div className="relative z-10">
-        <div className="border-b bg-background/60 backdrop-blur-md sticky top-0 z-50">
+        <div className="border-b border-white/5 bg-black/20 backdrop-blur-xl sticky top-0 z-50 supports-[backdrop-filter]:bg-black/20">
           <div className="flex h-16 items-center px-6">
             <h1 className="text-2xl font-semibold">{title}</h1>
             <div className="ml-auto flex items-center space-x-4">

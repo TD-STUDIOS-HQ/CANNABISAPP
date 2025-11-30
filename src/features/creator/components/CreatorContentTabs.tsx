@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Grid3X3, Camera, Crown, Play } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import GlassCard from "@/components/GlassCard";
 import { CreatorContent } from "../types";
 
 interface CreatorContentTabsProps {
@@ -30,20 +31,22 @@ export const CreatorContentTabs = ({
   return (
     <div className="px-4 sm:px-6 lg:px-8 mt-8">
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <TabsList className="bg-white border border-gray-200 p-1 mb-8">
-          <TabsTrigger value="posts" className="data-[state=active]:bg-gray-900 data-[state=active]:text-white flex items-center gap-2">
-            <Grid3X3 className="w-4 h-4" />
-            Posts
-          </TabsTrigger>
-          <TabsTrigger value="free" className="data-[state=active]:bg-gray-900 data-[state=active]:text-white flex items-center gap-2">
-            <Camera className="w-4 h-4" />
-            Free
-          </TabsTrigger>
-          <TabsTrigger value="premium" className="data-[state=active]:bg-gray-900 data-[state=active]:text-white flex items-center gap-2">
-            <Crown className="w-4 h-4" />
-            Premium
-          </TabsTrigger>
-        </TabsList>
+        <GlassCard className="p-1 mb-8">
+          <TabsList className="bg-transparent w-full justify-start">
+            <TabsTrigger value="posts" className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 flex items-center gap-2 flex-1">
+              <Grid3X3 className="w-4 h-4" />
+              Posts
+            </TabsTrigger>
+            <TabsTrigger value="free" className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 flex items-center gap-2 flex-1">
+              <Camera className="w-4 h-4" />
+              Free
+            </TabsTrigger>
+            <TabsTrigger value="premium" className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 flex items-center gap-2 flex-1">
+              <Crown className="w-4 h-4" />
+              Premium
+            </TabsTrigger>
+          </TabsList>
+        </GlassCard>
 
         <TabsContent value="posts">
           <motion.div
@@ -54,15 +57,15 @@ export const CreatorContentTabs = ({
           >
             {content.length === 0 ? (
               <div className="col-span-3 text-center py-16">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Camera className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/10">
+                  <Camera className="w-8 h-8 text-white/40" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No posts yet</h3>
-                <p className="text-gray-500">This creator hasn't shared any content yet.</p>
+                <h3 className="text-lg font-semibold text-white mb-2">No posts yet</h3>
+                <p className="text-white/60">This creator hasn't shared any content yet.</p>
               </div>
             ) : (
               content.map((item) => (
-                <div key={item.id} className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative group">
+                <div key={item.id} className="aspect-square bg-white/5 rounded-lg overflow-hidden relative group border border-white/10">
                   {item.file_url ? (
                     <img 
                       src={item.file_url} 
@@ -70,26 +73,26 @@ export const CreatorContentTabs = ({
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                      <div className="w-full h-full flex items-center justify-center bg-white/5">
                       {item.content_type === 'video' ? (
-                        <Play className="w-8 h-8 text-gray-500" />
+                          <Play className="w-8 h-8 text-white/40" />
                       ) : (
-                        <Camera className="w-8 h-8 text-gray-500" />
+                            <Camera className="w-8 h-8 text-white/40" />
                       )}
                     </div>
                   )}
                   
                   {item.is_premium && (
                     <div className="absolute top-2 right-2">
-                      <Crown className="w-4 h-4 text-amber-400" />
+                      <Crown className="w-4 h-4 text-amber-400 drop-shadow-md" />
                     </div>
                   )}
                   
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <h4 className="font-medium text-sm mb-1">{item.title}</h4>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                    <div className="text-white text-center p-2">
+                      <h4 className="font-medium text-sm mb-1 line-clamp-2">{item.title}</h4>
                       {item.price && (
-                        <p className="text-xs">${(item.price / 100).toFixed(2)}</p>
+                        <p className="text-xs text-emerald-400">${(item.price / 100).toFixed(2)}</p>
                       )}
                     </div>
                   </div>
@@ -108,15 +111,15 @@ export const CreatorContentTabs = ({
           >
             {freeContent.length === 0 ? (
               <div className="col-span-3 text-center py-16">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Camera className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/10">
+                  <Camera className="w-8 h-8 text-white/40" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No free content</h3>
-                <p className="text-gray-500">This creator hasn't shared any free content yet.</p>
+                <h3 className="text-lg font-semibold text-white mb-2">No free content</h3>
+                <p className="text-white/60">This creator hasn't shared any free content yet.</p>
               </div>
             ) : (
               freeContent.map((item) => (
-                <div key={item.id} className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                <div key={item.id} className="aspect-square bg-white/5 rounded-lg overflow-hidden border border-white/10">
                   {item.file_url ? (
                     <img 
                       src={item.file_url} 
@@ -124,8 +127,8 @@ export const CreatorContentTabs = ({
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                      <Camera className="w-8 h-8 text-gray-500" />
+                      <div className="w-full h-full flex items-center justify-center bg-white/5">
+                        <Camera className="w-8 h-8 text-white/40" />
                     </div>
                   )}
                 </div>
@@ -143,33 +146,33 @@ export const CreatorContentTabs = ({
           >
             {premiumContent.length === 0 ? (
               <div className="col-span-3 text-center py-16">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/20">
                   <Crown className="w-8 h-8 text-amber-500" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No premium content</h3>
-                <p className="text-gray-500">This creator hasn't shared any premium content yet.</p>
+                <h3 className="text-lg font-semibold text-white mb-2">No premium content</h3>
+                <p className="text-white/60">This creator hasn't shared any premium content yet.</p>
               </div>
             ) : (
               <>
                 {!isSubscribed && (
-                  <div className="col-span-3 bg-white rounded-2xl border border-gray-200 p-8 text-center mb-6">
-                    <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <GlassCard className="col-span-3 p-8 text-center mb-6">
+                      <div className="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/20">
                       <Crown className="w-8 h-8 text-amber-500" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Premium Content</h3>
-                    <p className="text-gray-600 mb-6">
+                      <h3 className="text-lg font-semibold text-white mb-2">Premium Content</h3>
+                      <p className="text-white/60 mb-6">
                       Subscribe to unlock exclusive content from {creatorName}
                     </p>
                     <Button 
                       onClick={onSubscribe} 
-                      className="bg-gray-900 hover:bg-gray-800 text-white"
+                        className="bg-amber-500 hover:bg-amber-600 text-black font-semibold"
                     >
                       Subscribe ${subscriptionPrice}/mo
                     </Button>
-                  </div>
+                    </GlassCard>
                 )}
                 {premiumContent.map((item) => (
-                  <div key={item.id} className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative">
+                  <div key={item.id} className="aspect-square bg-white/5 rounded-lg overflow-hidden relative border border-white/10">
                     {item.file_url ? (
                       <img 
                         src={item.file_url} 
@@ -177,14 +180,14 @@ export const CreatorContentTabs = ({
                         className={`w-full h-full object-cover ${!isSubscribed ? 'blur-md' : ''}`}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                        <div className="w-full h-full flex items-center justify-center bg-white/5">
                         <Crown className="w-8 h-8 text-amber-500" />
                       </div>
                     )}
                     
                     {!isSubscribed && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Crown className="w-8 h-8 text-amber-500" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                        <Crown className="w-8 h-8 text-amber-500 drop-shadow-lg" />
                       </div>
                     )}
                   </div>

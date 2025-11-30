@@ -1,8 +1,17 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
-export default function GlassCard({children}:{children:React.ReactNode}) {
+interface GlassCardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export default function GlassCard({ children, className }: GlassCardProps) {
   return (
-    <div className="mx-auto w-full max-w-md rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,.35)]">
+    <div className={cn(
+      "w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,.35)]",
+      className
+    )}>
       {children}
     </div>
   );
